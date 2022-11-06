@@ -22,3 +22,4 @@ while count < NP:
         count += 1
 
 print(X)
+print("Multiverse initialized. Step 2 complete !!")
