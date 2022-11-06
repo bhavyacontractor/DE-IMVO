@@ -5,7 +5,7 @@ CR = 0.2  # Crossover Probability
 F = 0.5  # Difference Coefficient
 X_max = 14  # Upper limit of search space
 X_min = 0  # Lower limit of search space
-V = 50  # Vehicle Speed
+V = 50  # Vehicle Speed km/h
 M = 58.5  # Freight per unit time
 T = 1  # Latest delivery time
 H = 11  # Number of hospitals
@@ -53,4 +53,4 @@ if D != N0:
     print("Number of orders must equal Universe Dimension. Check initialParams.py")
     exit()
 
-print("Parameters initialized. Step 1 complete !!")
+print("Parameters initialized. Step 1 complete !! \n")

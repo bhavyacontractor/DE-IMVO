@@ -11,15 +11,12 @@ while count < NP:
         j = random.randint(X_min, X_max)
         order_map_vehicle.append(j)
 
-    vehicle_map_order = {}
-    for i in range(Nv):
-        vehicle_map_order[i] = []
-    for i in range(N0):
-        vehicle_map_order[order_map_vehicle[i]].append(i)
-
-    if check_constraints(vehicle_map_order):
+    if check_constraints(order_map_vehicle):
         X.append(order_map_vehicle)
         count += 1
 
-print(X)
+# print(X)
+for i in X:
+    print(i)
+print("\n")
 print("Multiverse initialized. Step 2 complete !!")
