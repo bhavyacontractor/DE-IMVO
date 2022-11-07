@@ -1,12 +1,6 @@
 from initialMultiverse import *
 import itertools
-#
-# values = [1, 2, 3]
-#
-# per = list(itertools.permutations(values))
-#
-# for val in per:
-#     print(val[0])
+
 
 def find_min_path(vehicle_map_order):
     print(vehicle_map_order)
