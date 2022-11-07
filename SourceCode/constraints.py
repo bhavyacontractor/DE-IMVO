@@ -1,12 +1,17 @@
 from initialParams import *
 
-
-def check_constraints(order_map_vehicle):
+def create_vehicle_map(order_map_vehicle):
     vehicle_map_order = {}
     for i in range(Nv):
         vehicle_map_order[i] = []
     for i in range(N0):
         vehicle_map_order[order_map_vehicle[i]].append(i)
+
+    return vehicle_map_order
+
+
+def check_constraints(order_map_vehicle):
+    vehicle_map_order = create_vehicle_map(order_map_vehicle)
 
     for i in range(Nv):
         vehicle_type = int(i/veh_of_each_type)
@@ -34,3 +39,5 @@ def check_constraints(order_map_vehicle):
 #
 # for val in per:
 #     print(val[0])
+
+# print(check_constraints([6, 9, 9, 4, 8, 12, 12, 4, 10, 5, 13, 14, 1, 4, 12, 2, 12, 3, 6, 12, 1, 10, 2, 9, 0, 0, 6, 1, 0, 13, 6, 11, 1]))

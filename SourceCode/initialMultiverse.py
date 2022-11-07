@@ -16,7 +16,7 @@ while count < NP:
         count += 1
 
 # print(X)
-for i in X:
-    print(i)
-print("\n")
+# for i in X:
+#     print(i)
+# print("\n")
 print("Multiverse initialized. Step 2 complete !!")
