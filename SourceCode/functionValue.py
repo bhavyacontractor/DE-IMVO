@@ -34,11 +34,32 @@ def transportation_cost(min_dis):
 
     return M*temp/V
 
+def vehicle_utilization(vehicle_map_order):
+    temp = 0
+
+    for vehicle_number in range(Nv):
+        vehicle_type = int(i/veh_of_each_type)
+        cur_weight = 0
+        cur_vol = 0
+        max_weight = vehicle_specs[vehicle_type][0]
+        max_vol = vehicle_specs[vehicle_type][1]
+        
+        for j in vehicle_map_order[vehicle_number]:
+            order_type = j % n_supplies
+            cur_weight += order_matrix[j]
+            cur_vol += (order_matrix[j]) / supply_specs[order_type]
+        
+        temp += max(cur_weight / max_weight, cur_vol / max_vol)
+
+    return temp
+
+
 def f(X):
     vehicle_map_order = create_vehicle_map(X)
     min_path, min_dis = find_min_path(vehicle_map_order)
 
     cost = transportation_cost(min_dis)
+    tau = vehicle_utilization(vehicle_map_order)
 
     print(min_path, min_dis)
     print(cost)
