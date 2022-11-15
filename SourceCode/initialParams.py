@@ -49,6 +49,18 @@ order_matrix = [3, 0.8, 1, 1.5, 1, 2, 1, 0.8, 1.3, 2, 1, 1.5, 0.8, 0.5, 1, 5, 1.
 # distanceMatrix[i][j] is distance between hospital i and hospital j
 # index 12 is Distribution Center, rest are hospitals
 
+demand_urgency_values =   [[0.5522, 0.4291, 0.5249],   # [[firsthospital_firstsupply_urgency, , ], [secondhospital, , ].....]
+                    [0.4482, 0.5062, 0.6896],
+                    [0.4086, 0.4509, 0.4768],
+                    [0.3147, 0.3954, 0.3882],
+                    [0.0000, 0.0000, 0.0000],
+                    [1.0000, 1.0000, 1.0000],
+                    [0.2284, 0.1169, 0.1066],
+                    [0.1478, 0.2059, 0.1856],
+                    [0.1130, 0.1858, 0.1456],
+                    [0.1668, 0.3042, 0.1823],
+                    [0.2149, 0.2677, 0.2824]]
+
 if D != N0:
     print("Number of orders must equal Universe Dimension. Check initialParams.py")
     exit()

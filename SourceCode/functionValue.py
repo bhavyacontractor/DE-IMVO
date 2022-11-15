@@ -3,7 +3,6 @@ import itertools
 
 
 def find_min_path(vehicle_map_order):
-    print(vehicle_map_order)
     min_path = []
     min_dis = []
     for i in range(Nv):
@@ -13,7 +12,7 @@ def find_min_path(vehicle_map_order):
         # print(per)
         for j in per:
             if len(j) != 0:
-                dis = distance_matrix[11][int(j[0]/n_supplies)]
+                dis = distance_matrix[len(distance_matrix)-1][int(j[0]/n_supplies)]
 
                 for k in range(1, len(j)):
                     dis += distance_matrix[int(j[k-1]/n_supplies)][int(j[k]/n_supplies)]
@@ -38,7 +37,7 @@ def vehicle_utilization(vehicle_map_order):
     temp = 0
 
     for vehicle_number in range(Nv):
-        vehicle_type = int(i/veh_of_each_type)
+        vehicle_type = int(vehicle_number/veh_of_each_type)
         cur_weight = 0
         cur_vol = 0
         max_weight = vehicle_specs[vehicle_type][0]
@@ -49,9 +48,29 @@ def vehicle_utilization(vehicle_map_order):
             cur_weight += order_matrix[j]
             cur_vol += (order_matrix[j]) / supply_specs[order_type]
         
-        temp += max(cur_weight / max_weight, cur_vol / max_vol)
+        temp += max((cur_weight / max_weight), (cur_vol / max_vol))
 
     return temp
+
+def demand_urgency(min_path):
+    urgency_value = 0
+
+    for vehicle_number in range(Nv):
+        cur_time = 0    
+        prev = len(distance_matrix)-1
+        for order in min_path[vehicle_number]:
+            hospital = int(order / n_supplies)
+            cur_time += distance_matrix[prev][hospital] / V
+            prev = hospital
+
+            if cur_time <= T:
+                urgency_value += demand_urgency_values[hospital][order % n_supplies]
+            else: 
+                break
+
+    return urgency_value
+
+
 
 
 def f(X):
@@ -60,9 +79,12 @@ def f(X):
 
     cost = transportation_cost(min_dis)
     tau = vehicle_utilization(vehicle_map_order)
+    gamma = demand_urgency(min_path)
 
     print(min_path, min_dis)
-    print(cost)
-    print(tau)
+    # print(cos
+    # print(tau)
+    # print(gamma)
+    return tau * gamma / cost
 
 f([7, 1, 4, 10, 8, 10, 9, 12, 5, 3, 12, 6, 1, 11, 2, 8, 12, 13, 8, 5, 2, 14, 2, 4, 9, 6, 0, 10, 8, 11, 10, 14, 6]) 
