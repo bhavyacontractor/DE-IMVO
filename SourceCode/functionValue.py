@@ -81,10 +81,10 @@ def f(X):
     tau = vehicle_utilization(vehicle_map_order)
     gamma = demand_urgency(min_path)
 
-    print(min_path, min_dis)
+    # print(min_path, min_dis)
     # print(cos
     # print(tau)
     # print(gamma)
     return tau * gamma / cost
 
-f([7, 1, 4, 10, 8, 10, 9, 12, 5, 3, 12, 6, 1, 11, 2, 8, 12, 13, 8, 5, 2, 14, 2, 4, 9, 6, 0, 10, 8, 11, 10, 14, 6]) 
+# f([7, 1, 4, 10, 8, 10, 9, 12, 5, 3, 12, 6, 1, 11, 2, 8, 12, 13, 8, 5, 2, 14, 2, 4, 9, 6, 0, 10, 8, 11, 10, 14, 6])
