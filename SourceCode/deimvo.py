@@ -34,7 +34,9 @@ for iteration in range(G):
 
         if r1 < normalized_fitness[i]:
 
-            X[i] = white_hole
+            update = random.randint(0, D-1)
+            X[i][update] = white_hole[update]
+            # print("Done 1")
 
         elif r1 > normalized_fitness[i]:
 
@@ -47,24 +49,28 @@ for iteration in range(G):
                 if r3 < 0.5:
 
                     for j in range(D):
-                        X[i][j] = X_best[j] + int(F*(white_hole[j] - X[iteration][j]))
+                        X[i][j] = X_best[j] + int(F * (white_hole[j] - X[iteration%NP][j]))
                         if X[i][j] < X_min:
-                            X[i][j] = 0
+                            X[i][j] = X_min
                         if X[i][j] > X_max:
-                            X[i][j] = 15
+                            X[i][j] = X_max
+
+                    # print("Done 2")
 
                 else:
 
                     for j in range(D):
-                        X[i][j] = X_best[j] - int(F * (white_hole[j] - X[iteration][j]))
+                        X[i][j] = X_best[j] - int(F * (white_hole[j] - X[iteration%NP][j]))
                         if X[i][j] < X_min:
-                            X[i][j] = 0
+                            X[i][j] = X_min
                         if X[i][j] > X_max:
-                            X[i][j] = 15
+                            X[i][j] = X_max
+
+                    # print("Done 3")
 
             elif r2 > CR:
 
-                r4 = random.uniform(X_max - X_min, 2*(X_max - X_min))
+                r4 = random.uniform(X_max - X_min, 2 * (X_max - X_min))
                 if l == -1:
                     l = (X_max - X_min) / r4
 
@@ -81,15 +87,16 @@ for iteration in range(G):
                         # X_new.append(X_max)
                     X_new.append(x_dash)
 
-
-                if f(X_new) > fitness[i]:
+                if check_constraints(X_new) and (f(X_new) > fitness[i]):
                     X[i] = X_new
 
                 if (l < (X_max - X_min) / 2) and (l > X_min):
-                    l = 2*l
-                elif ((X_max - X_min)/2 <= l) and (l < X_max):
-                    l = 2*l - 1
+                    l = 2 * l
+                elif ((X_max - X_min) / 2 <= l) and (l < X_max):
+                    l = 2 * l - 1
 
+                # print("Done 4")
+    print(iteration, max_fit, min_fit)
 fitness = []
 min_fit = 1e9
 max_fit = -1e9
@@ -105,9 +112,3 @@ for universe in X:
 
 print(X_best)
 print(min_fit, max_fit)
-
-
-
-
-
-

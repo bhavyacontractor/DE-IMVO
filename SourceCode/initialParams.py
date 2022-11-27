@@ -1,6 +1,6 @@
 D = 33  # Universe Dimension
 NP = 20  # Number of universes
-G = 1  # Number of iterations
+G = 200  # Number of iterations
 CR = 0.2  # Crossover Probability
 F = 0.5  # Difference Coefficient
 X_max = 14  # Upper limit of search space
