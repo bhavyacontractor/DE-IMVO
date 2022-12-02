@@ -1,5 +1,8 @@
 from functionValue import *
 
+print()
+print("Starting iterations...")
+print()
 
 def roulette_wheel(fit, x):
     return random.choices(x, weights=fit)
@@ -23,7 +26,15 @@ for iteration in range(G):
     for universe in fitness:
         numerator = universe - min_fit
         denominator = max_fit - min_fit
+
+        flag = 0
+        if denominator == 0:
+            flag = 1
+            break
         normalized_fitness.append(numerator / denominator)
+
+    if flag == 1:
+        break
 
     l = -1
     for i in range(NP):
@@ -96,7 +107,8 @@ for iteration in range(G):
                     l = 2 * l - 1
 
                 # print("Done 4")
-    print(iteration, max_fit, min_fit)
+    print("Iteration number:", iteration+1, "Funtion Value:", max_fit)
+    print()
 fitness = []
 min_fit = 1e9
 max_fit = -1e9
@@ -110,5 +122,10 @@ for universe in X:
         max_fit = cur_fit
         X_best = universe
 
-print(X_best)
-print(min_fit, max_fit)
+print("Optimal solution obtained!!!")
+print()
+print("Path followed by different vehicles:")
+print(create_vehicle_map(X_best))
+print()
+print("Function Value:")
+print(max_fit)

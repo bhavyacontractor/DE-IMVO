@@ -82,9 +82,9 @@ def f(X):
     gamma = demand_urgency(min_path)
 
     # print(min_path, min_dis)
-    # print(cos
+    # print(cost)
     # print(tau)
     # print(gamma)
     return tau * gamma / cost
 
-# f([7, 1, 4, 10, 8, 10, 9, 12, 5, 3, 12, 6, 1, 11, 2, 8, 12, 13, 8, 5, 2, 14, 2, 4, 9, 6, 0, 10, 8, 11, 10, 14, 6])
+# print(f([1, 12, 1, 0, 13, 14, 4, 14, 8, 2, 12, 0, 5, 5, 5, 6, 2, 9, 3, 11, 5, 0, 13, 0, 6, 6, 10, 8, 7, 11, 14, 10, 8]))
